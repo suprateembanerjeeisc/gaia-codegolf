@@ -1,6 +1,6 @@
 # InterSystems Programming Challenge 1: Code Golf
 
-Minimal-code solution to the challenge: identify Gaia DR3 sources whose **BP or RP flux changed by more than 100%** over the observation period and write the result CSV. Optimized for **fewest lines of code** (see the sibling release `gaia-benchmark` for the speed-optimized, parallel variant).
+Minimal-code solution to the challenge: identify Gaia DR3 sources whose **BP or RP flux changed by more than 100%** over the observation period and write the result CSV. Optimized for **fewest lines of code** (see the sibling repo `gaia-benchmark` for the speed-optimized, parallel variant).
 
 ## Build & run
 
