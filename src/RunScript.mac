@@ -1,0 +1,2 @@
+ROUTINE RunScript
+ do ##class(Gaia.Flux).Go()
