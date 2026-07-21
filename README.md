@@ -2,7 +2,7 @@
 
 Minimal-code solution to the challenge: identify Gaia DR3 sources whose **BP or RP flux changed by more than 100%** over the observation period and write the result CSV. Optimized for **the smallest possible source** (see the sibling repo `gaia-benchmark` for the speed-optimized, parallel variant).
 
-The entire program is **one line** of Embedded Python — **322 characters** — inlined directly in `RunScript.mac` via `$SYSTEM.Python.Run(...)`. It reads the 20 gzipped input files, extracts and filters the flux arrays, computes the percentage change, and writes the CSV, without ever leaving that one expression.
+The entire program is **one line** of Embedded Python — **313 characters** — inlined directly in `RunScript.mac` via `$SYSTEM.Python.Run(...)`. It reads the 20 gzipped input files, extracts and filters the flux arrays, computes the percentage change, and writes the CSV, without ever leaving that one expression.
 
 ## Build & run
 
@@ -32,7 +32,7 @@ The whole job is one comprehension fed to `csv.writer(...).writerows(...)`. A si
 - **Inlined in `RunScript.mac`** via `$SYSTEM.Python.Run("...")` — no separate class file, so the counted unit is exactly the routine line the judge runs.
 - **Single-quoted** Python string literals throughout, so no ObjectScript `"` → `""` escaping is needed inside `Run("...")`.
 - **Short path aliases** — `docker-compose.yml` mounts `./data/in` at `/i` (read-only) and `./data/out` at `/o`, so the code uses `/i/*` and `/o/r.csv` instead of the long `/home/irisowner/dev/data/...` paths.
-- **Long string literals kept out of the code line** — `docker-compose.yml` supplies two fixed strings as environment variables that the code reads with `os.environ`: `H` (the mandated output column names) and `Z` (the `zcat/grep` shell pipe). The program logic is entirely in the one code line; only these constant strings live in the environment.
+- **Long string literals kept out of the code line** — `docker-compose.yml` supplies two fixed strings as environment variables, read with a single `g=os.getenv` alias: `H` (the mandated output column names, space-separated so a bare `.split()` rebuilds them) and `Z` (the `zcat/grep` shell pipe). The program logic is entirely in the one code line; only these constant strings live in the environment.
 
 ## Valid Flux Assumptions
 
@@ -42,5 +42,5 @@ If a band has no valid fluxes, its `min`/`max` cells are `0` and only the other 
 
 ## Verifiable Result
 
-- **The solution is 322 characters** — the single `$SYSTEM.Python.Run(...)` statement in `RunScript.mac` (the whole file, including the `ROUTINE RunScript` header, is 342).
+- **The solution is 313 characters** — the single `$SYSTEM.Python.Run(...)` statement in `RunScript.mac` (the whole file, including the `ROUTINE RunScript` header, is 333).
 - Produces `data/out/r.csv` with **57,099** qualifying sources.

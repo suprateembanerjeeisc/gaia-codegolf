@@ -1,2 +1,2 @@
 ROUTINE RunScript
- d $SYSTEM.Python.Run("import os,csv;NaN=0;E=lambda a:(min(v),max(v))if(v:=[*filter(None,eval(a))])else(0,0);csv.writer(open('/o/r.csv','w')).writerows([os.environ['H'].split(',')]+[[s[1],*p+q,100*c]for s in csv.reader(os.popen(os.environ['Z']))for p,q in[map(E,s[11:17:5])]if(c:=max([0]+[h/l-1 for l,h in(p,q)if l]))>1])")
+ d $SYSTEM.Python.Run("import os,csv;NaN=0;g=os.getenv;E=lambda a:(min(v),max(v))if(v:=[*filter(None,eval(a))])else(0,0);csv.writer(open('/o/r.csv','w')).writerows([g('H').split()]+[[s[1],*p+q,100*c]for s in csv.reader(os.popen(g('Z')))for p,q in[map(E,s[11:17:5])]if(c:=max([0]+[h/l-1 for l,h in(p,q)if l]))>1])")

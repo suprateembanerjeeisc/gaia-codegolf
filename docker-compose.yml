@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       - ISC_CPF_MERGE_FILE=/home/irisowner/dev/merge.cpf
-      - H=source_id,bp_min_flux,bp_max_flux,rp_min_flux,rp_max_flux,percentage_change
+      - H=source_id bp_min_flux bp_max_flux rp_min_flux rp_max_flux percentage_change
       - "Z=zcat /i/*|grep ^[0-9]"
     ports:
       - 1972
